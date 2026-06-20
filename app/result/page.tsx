@@ -23,8 +23,6 @@ export default async function ResultPage({ searchParams }: Props) {
   const descLines = content.description.split("\n");
 
   return (
-    <>
-    <style>{`body { background: #FAFAF8 !important; }`}</style>
     <main style={{ background: "#FAFAF8", minHeight: "100svh", padding: "4rem 1.5rem 2rem" }}>
       <div style={{ maxWidth: "400px", margin: "0 auto" }}>
 
@@ -128,6 +126,5 @@ export default async function ResultPage({ searchParams }: Props) {
         </p>
       </div>
     </main>
-    </>
   );
 }

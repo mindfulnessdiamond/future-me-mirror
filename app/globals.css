@@ -4,7 +4,7 @@ html, body {
   margin: 0;
   padding: 0;
   height: 100%;
-  background: #2C2420;
+  background: #FAFAF8;
 }
 
 :root {
@@ -35,7 +35,7 @@ img {
 }
 
 body {
-  background: #2C2420;
+  background: #FAFAF8;
   color: var(--foreground);
   font-family: var(--font-jp);
   -webkit-font-smoothing: antialiased;

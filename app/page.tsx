@@ -1,5 +1,6 @@
 "use client";
 
+import { useEffect } from "react";
 import { motion } from "framer-motion";
 
 const fadeUp = {
@@ -12,6 +13,15 @@ const fadeUp = {
 };
 
 export default function LandingPage() {
+  useEffect(() => {
+    document.body.style.background = "#2C2420";
+    document.documentElement.style.background = "#2C2420";
+    return () => {
+      document.body.style.background = "";
+      document.documentElement.style.background = "";
+    };
+  }, []);
+
   return (
     <main style={{
       minHeight: "100%",
