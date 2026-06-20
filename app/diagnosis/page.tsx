@@ -38,7 +38,7 @@ export default async function DiagnosisPage({ searchParams }: Props) {
       <div style={{
         position: "fixed",
         inset: 0,
-        backgroundImage: "url(/Question.png)",
+        backgroundImage: "url(/Question.jpg)",
         backgroundSize: "cover",
         backgroundPosition: "center",
         backgroundRepeat: "no-repeat",

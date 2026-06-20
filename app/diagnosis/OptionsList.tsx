@@ -24,16 +24,10 @@ export default function OptionsList({ options, answers }: Props) {
             whileHover="active"
             whileTap="tap"
             variants={{
-              active: {
-                y: -3,
-                boxShadow: "0 10px 28px -8px rgba(184,160,106,0.55)",
-              },
-              tap: {
-                scale: 0.96,
-                y: 0,
-                boxShadow: "0 6px 18px -8px rgba(184,160,106,0.5)",
-              },
+              active: { scale: 1.015 },
+              tap: { scale: 0.97 },
             }}
+            transition={{ duration: 0.25, ease: "easeOut" }}
             style={{
               position: "relative",
               display: "flex",
@@ -71,15 +65,10 @@ export default function OptionsList({ options, answers }: Props) {
             {/* Key badge — fills gold on active */}
             <motion.span
               variants={{
-                active: {
-                  backgroundColor: "#B8A06A",
-                  color: "#FFFFFF",
-                  scale: 1.12,
-                  rotate: 360,
-                },
+                active: { backgroundColor: "#B8A06A", color: "#FFFFFF", scale: 1.12 },
                 tap: { backgroundColor: "#B8A06A", color: "#FFFFFF", scale: 1.05 },
               }}
-              transition={{ duration: 0.5, ease: "easeOut" }}
+              transition={{ duration: 0.3, ease: "easeOut" }}
               style={{
                 position: "relative",
                 zIndex: 1,
