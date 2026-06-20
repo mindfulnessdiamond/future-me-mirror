@@ -2,6 +2,7 @@ import { redirect } from "next/navigation";
 import { QUESTIONS } from "@/lib/questions";
 import { calculateResult } from "@/lib/scoring";
 import DiagnosisWrapper from "./DiagnosisWrapper";
+import OptionsList from "./OptionsList";
 
 interface Props {
   searchParams: Promise<{ q?: string; a?: string }>;
@@ -70,40 +71,7 @@ export default async function DiagnosisPage({ searchParams }: Props) {
         {question.text}
       </h2>
 
-      <div>
-        {question.options.map((opt) => {
-          const nextAnswers = [...answers, opt.key].join(",");
-          return (
-            <a
-              key={opt.key}
-              href={`/diagnosis?a=${nextAnswers}`}
-              style={{
-                display: "flex",
-                alignItems: "center",
-                gap: "1rem",
-                padding: "1.1rem 0",
-                borderBottom: "1px solid #E0DDD8",
-                textDecoration: "none",
-              }}
-            >
-              <span style={{
-                fontFamily: "Georgia, serif",
-                fontSize: "0.65rem",
-                letterSpacing: "0.2em",
-                color: "#5F5F5C",
-                minWidth: "1rem",
-                flexShrink: 0,
-              }}>{opt.key}</span>
-              <span style={{
-                fontSize: "0.9rem",
-                fontWeight: 300,
-                color: "#1A1A1A",
-                lineHeight: 1.6,
-              }}>{opt.label}</span>
-            </a>
-          );
-        })}
-      </div>
+      <OptionsList options={question.options} answers={answers} />
     </main>
     </DiagnosisWrapper>
   );
