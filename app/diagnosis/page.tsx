@@ -1,6 +1,7 @@
 import { redirect } from "next/navigation";
 import { QUESTIONS } from "@/lib/questions";
 import { calculateResult } from "@/lib/scoring";
+import DiagnosisWrapper from "./DiagnosisWrapper";
 
 interface Props {
   searchParams: Promise<{ q?: string; a?: string }>;
@@ -22,6 +23,7 @@ export default async function DiagnosisPage({ searchParams }: Props) {
   const progress = ((questionIndex + 1) / QUESTIONS.length) * 100;
 
   return (
+    <DiagnosisWrapper>
     <main style={{
       minHeight: "100svh",
       background: "#FAFAF8",
@@ -103,5 +105,6 @@ export default async function DiagnosisPage({ searchParams }: Props) {
         })}
       </div>
     </main>
+    </DiagnosisWrapper>
   );
 }
