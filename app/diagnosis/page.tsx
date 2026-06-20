@@ -27,13 +27,33 @@ export default async function DiagnosisPage({ searchParams }: Props) {
     <DiagnosisWrapper>
     <main style={{
       minHeight: "100svh",
-      background: "#FAFAF8",
+      background: "#FAF6F0",
       paddingTop: "calc(env(safe-area-inset-top) + 4rem)",
       paddingBottom: "2rem",
       paddingLeft: "2rem",
       paddingRight: "2rem",
       position: "relative",
     }}>
+      {/* Watercolor background layer (fixed for iOS) */}
+      <div style={{
+        position: "fixed",
+        inset: 0,
+        backgroundImage: "url(/Question.png)",
+        backgroundSize: "cover",
+        backgroundPosition: "center",
+        backgroundRepeat: "no-repeat",
+        zIndex: 0,
+        pointerEvents: "none",
+      }} />
+      {/* Soft veil so text stays readable */}
+      <div style={{
+        position: "fixed",
+        inset: 0,
+        background: "rgba(250,246,240,0.45)",
+        zIndex: 0,
+        pointerEvents: "none",
+      }} />
+
       <div style={{ position: "fixed", top: 0, left: 0, right: 0, height: "2px", background: "#E0DDD8", zIndex: 50 }}>
         <div style={{ height: "100%", width: `${progress}%`, background: "#B8A06A" }} />
       </div>
@@ -50,6 +70,7 @@ export default async function DiagnosisPage({ searchParams }: Props) {
         zIndex: 100,
       }}>← Back</a>
 
+      <div style={{ position: "relative", zIndex: 1 }}>
       <p style={{
         fontFamily: "Georgia, serif",
         fontSize: "0.65rem",
@@ -72,6 +93,7 @@ export default async function DiagnosisPage({ searchParams }: Props) {
       </h2>
 
       <OptionsList options={question.options} answers={answers} />
+      </div>
     </main>
     </DiagnosisWrapper>
   );
