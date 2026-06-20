@@ -157,22 +157,54 @@ export default function LandingPage() {
           custom={5}
           variants={fadeUp}
           href="/diagnosis"
-          whileHover={{ letterSpacing: "0.28em" }}
-          transition={{ duration: 0.3 }}
+          whileHover="active"
+          whileTap="active"
           style={{
-            display: "inline-block",
-            borderBottom: "1px solid #B8A06A",
-            padding: "0.5rem 0 0.25rem",
+            position: "relative",
+            display: "inline-flex",
+            alignItems: "center",
+            gap: "0.6rem",
+            overflow: "hidden",
+            padding: "0.7rem 1.6rem",
+            borderRadius: "999px",
+            border: "1px solid #B8A06A",
             fontFamily: "var(--font-serif)",
             fontSize: "0.75rem",
-            letterSpacing: "0.2em",
+            letterSpacing: "0.25em",
             textTransform: "uppercase",
             color: "#1A1A1A",
             textDecoration: "none",
             WebkitTapHighlightColor: "transparent",
           }}
         >
-          Begin →
+          {/* gold fill sweeping in */}
+          <motion.span
+            variants={{ active: { scaleX: 1 } }}
+            initial={{ scaleX: 0 }}
+            transition={{ duration: 0.5, ease: [0.22, 1, 0.36, 1] }}
+            style={{
+              position: "absolute",
+              inset: 0,
+              transformOrigin: "left center",
+              background: "linear-gradient(90deg, #B8A06A 0%, #D4C18C 100%)",
+              zIndex: 0,
+            }}
+          />
+          <motion.span
+            variants={{ active: { color: "#FFFFFF" } }}
+            transition={{ duration: 0.3 }}
+            style={{ position: "relative", zIndex: 1 }}
+          >
+            Begin
+          </motion.span>
+          <motion.span
+            animate={{ x: [0, 6, 0] }}
+            transition={{ duration: 1.6, repeat: Infinity, ease: "easeInOut" }}
+            variants={{ active: { color: "#FFFFFF" } }}
+            style={{ position: "relative", zIndex: 1, display: "inline-block" }}
+          >
+            →
+          </motion.span>
         </motion.a>
 
         <motion.p
