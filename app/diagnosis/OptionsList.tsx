@@ -15,20 +15,12 @@ interface Props {
 export default function OptionsList({ options, answers }: Props) {
   return (
     <div style={{ display: "flex", flexDirection: "column", gap: "0.5rem" }}>
-      {options.map((opt, i) => {
+      {options.map((opt) => {
         const nextAnswers = [...answers, opt.key].join(",");
         return (
           <motion.a
             key={opt.key}
             href={`/diagnosis?a=${nextAnswers}`}
-            initial={{ opacity: 0, x: -40, rotate: -2 }}
-            animate={{ opacity: 1, x: 0, rotate: 0 }}
-            transition={{
-              type: "spring",
-              stiffness: 220,
-              damping: 18,
-              delay: 0.12 + i * 0.13,
-            }}
             whileHover="active"
             whileTap="tap"
             variants={{
@@ -50,8 +42,7 @@ export default function OptionsList({ options, answers }: Props) {
               padding: "1.15rem 1.1rem",
               border: "1px solid rgba(184,160,106,0.35)",
               borderRadius: "10px",
-              background: "rgba(255,255,255,0.55)",
-              backdropFilter: "blur(2px)",
+              background: "rgba(255,255,255,0.6)",
               textDecoration: "none",
               overflow: "hidden",
               WebkitTapHighlightColor: "transparent",
