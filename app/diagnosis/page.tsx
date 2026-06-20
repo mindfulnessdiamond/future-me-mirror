@@ -24,6 +24,7 @@ export default async function DiagnosisPage({ searchParams }: Props) {
 
   return (
     <DiagnosisWrapper>
+    <style>{`body { background: #FAFAF8 !important; }`}</style>
     <main style={{
       minHeight: "100svh",
       background: "#FAFAF8",
