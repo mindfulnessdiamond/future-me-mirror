@@ -14,8 +14,8 @@ const fadeUp = {
 
 export default function LandingPage() {
   useEffect(() => {
-    document.body.style.background = "#2C2420";
-    document.documentElement.style.background = "#2C2420";
+    document.body.style.background = "#F2EDE6";
+    document.documentElement.style.background = "#F2EDE6";
     return () => {
       document.body.style.background = "";
       document.documentElement.style.background = "";
@@ -32,7 +32,7 @@ export default function LandingPage() {
       display: "flex",
       flexDirection: "column",
       justifyContent: "center",
-      backgroundColor: "#2C2420",
+      backgroundColor: "#F2EDE6",
     }}>
       {/* Illustration */}
       <motion.img
