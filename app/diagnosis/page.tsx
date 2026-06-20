@@ -1,30 +1,39 @@
-import { redirect } from "next/navigation";
+"use client";
+
+import { useState } from "react";
+import { useRouter } from "next/navigation";
+import { AnimatePresence, motion } from "framer-motion";
 import { QUESTIONS } from "@/lib/questions";
 import { calculateResult } from "@/lib/scoring";
-import DiagnosisWrapper from "./DiagnosisWrapper";
 import OptionsList from "./OptionsList";
 
-interface Props {
-  searchParams: Promise<{ q?: string; a?: string }>;
-}
+export default function DiagnosisPage() {
+  const router = useRouter();
+  const [answers, setAnswers] = useState<string[]>([]);
 
-export default async function DiagnosisPage({ searchParams }: Props) {
-  const params = await searchParams;
-  const answersStr = params.a ?? "";
-  const answers = answersStr ? answersStr.split(",") : [];
   const questionIndex = answers.length;
-
-  // All answered — redirect to result via URL param
-  if (questionIndex >= QUESTIONS.length) {
-    const resultType = calculateResult(answers);
-    redirect(`/result?type=${resultType}`);
-  }
-
   const question = QUESTIONS[questionIndex];
   const progress = ((questionIndex + 1) / QUESTIONS.length) * 100;
 
+  const handleSelect = (key: string) => {
+    const next = [...answers, key];
+    if (next.length >= QUESTIONS.length) {
+      const resultType = calculateResult(next);
+      router.push(`/result?type=${resultType}`);
+    } else {
+      setAnswers(next);
+    }
+  };
+
+  const handleBack = () => {
+    if (answers.length === 0) {
+      router.push("/");
+    } else {
+      setAnswers(answers.slice(0, -1));
+    }
+  };
+
   return (
-    <DiagnosisWrapper>
     <main style={{
       minHeight: "100svh",
       background: "#FAF6F0",
@@ -54,11 +63,16 @@ export default async function DiagnosisPage({ searchParams }: Props) {
         pointerEvents: "none",
       }} />
 
+      {/* Progress bar */}
       <div style={{ position: "fixed", top: 0, left: 0, right: 0, height: "2px", background: "#E0DDD8", zIndex: 50 }}>
-        <div style={{ height: "100%", width: `${progress}%`, background: "#B8A06A" }} />
+        <motion.div
+          animate={{ width: `${progress}%` }}
+          transition={{ duration: 0.4, ease: "easeOut" }}
+          style={{ height: "100%", background: "#B8A06A" }}
+        />
       </div>
 
-      <a href="/" style={{
+      <button onClick={handleBack} style={{
         position: "fixed",
         top: "calc(env(safe-area-inset-top) + 1rem)",
         left: "1.5rem",
@@ -66,35 +80,47 @@ export default async function DiagnosisPage({ searchParams }: Props) {
         fontSize: "0.8rem",
         letterSpacing: "0.15em",
         color: "#96803F",
-        textDecoration: "none",
+        background: "none",
+        border: "none",
+        cursor: "pointer",
         zIndex: 100,
-      }}>← Back</a>
+        WebkitTapHighlightColor: "transparent",
+      }}>← Back</button>
 
       <div style={{ position: "relative", zIndex: 1 }}>
-      <p style={{
-        fontFamily: "Georgia, serif",
-        fontSize: "0.65rem",
-        letterSpacing: "0.3em",
-        color: "#96803F",
-        textTransform: "uppercase",
-        marginBottom: "1.5rem",
-      }}>
-        Q{questionIndex + 1} / {QUESTIONS.length}
-      </p>
+        <p style={{
+          fontFamily: "Georgia, serif",
+          fontSize: "0.65rem",
+          letterSpacing: "0.3em",
+          color: "#96803F",
+          textTransform: "uppercase",
+          marginBottom: "1.5rem",
+        }}>
+          Q{questionIndex + 1} / {QUESTIONS.length}
+        </p>
 
-      <h2 style={{
-        fontSize: "1.1rem",
-        fontWeight: 300,
-        color: "#1A1A1A",
-        lineHeight: 1.8,
-        marginBottom: "2.5rem",
-      }}>
-        {question.text}
-      </h2>
+        <AnimatePresence mode="wait">
+          <motion.div
+            key={questionIndex}
+            initial={{ opacity: 0 }}
+            animate={{ opacity: 1 }}
+            exit={{ opacity: 0 }}
+            transition={{ duration: 0.25, ease: "easeOut" }}
+          >
+            <h2 style={{
+              fontSize: "1.1rem",
+              fontWeight: 300,
+              color: "#1A1A1A",
+              lineHeight: 1.8,
+              marginBottom: "2.5rem",
+            }}>
+              {question.text}
+            </h2>
 
-      <OptionsList options={question.options} answers={answers} />
+            <OptionsList options={question.options} onSelect={handleSelect} />
+          </motion.div>
+        </AnimatePresence>
       </div>
     </main>
-    </DiagnosisWrapper>
   );
 }
