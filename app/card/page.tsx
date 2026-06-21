@@ -3,7 +3,7 @@ import { ResultType } from "@/lib/types";
 import CardView from "./CardView";
 
 interface Props {
-  searchParams: Promise<{ type?: string }>;
+  searchParams: Promise<{ type?: string; uid?: string }>;
 }
 
 const ALL_TYPES: ResultType[] = [
@@ -14,6 +14,7 @@ const ALL_TYPES: ResultType[] = [
 export default async function CardPage({ searchParams }: Props) {
   const params = await searchParams;
   const type = params.type as ResultType | undefined;
+  const uid = params.uid;
 
   if (!type || !ALL_TYPES.includes(type)) {
     redirect("/");
@@ -21,7 +22,7 @@ export default async function CardPage({ searchParams }: Props) {
 
   return (
     <main style={{ background: "#FAFAF8", minHeight: "100svh", padding: "3rem 1.5rem 2rem" }}>
-      <CardView type={type} />
+      <CardView type={type} uid={uid} />
     </main>
   );
 }

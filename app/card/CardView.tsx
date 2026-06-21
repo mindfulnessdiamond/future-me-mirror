@@ -13,9 +13,25 @@ function getImageFile(type: ResultType): string {
   return IMAGE_FILE[type] ?? `${type}.JPG`;
 }
 
-export default function CardView({ type }: { type: ResultType }) {
+// ▼ ProLineの「クリックで発火するURL（アクションURL）」のベース。
+//   識別済み友だち(uid)がタップ → 指定シナリオへ移動して即メッセージ発火させる用。
+//   ProLineで発行したURLをここに入れてください（uidは自動で末尾に付けます）。
+//   未設定の間は、通常のLINEトークを開くだけにフォールバックします。
+const RETURN_ACTION_URL = ""; // 例: "https://b94jxiy5.autosns.app/xxxxx"
+const LINE_TALK_URL = "https://line.me/R/ti/p/@391knuuu";
+
+function buildReturnUrl(uid?: string): string {
+  if (RETURN_ACTION_URL && uid) {
+    const sep = RETURN_ACTION_URL.includes("?") ? "&" : "?";
+    return `${RETURN_ACTION_URL}${sep}uid=${encodeURIComponent(uid)}`;
+  }
+  return LINE_TALK_URL;
+}
+
+export default function CardView({ type, uid }: { type: ResultType; uid?: string }) {
   const content = RESULT_CONTENT[type];
   const descLines = content.description.split("\n");
+  const returnUrl = buildReturnUrl(uid);
   const shareCardRef = useRef<HTMLDivElement>(null);
   const [saving, setSaving] = useState(false);
   const tagText = "@fumi_jeweler #FutureMeMirror";
@@ -196,7 +212,7 @@ export default function CardView({ type }: { type: ResultType }) {
 
       {/* ===== back to LINE ===== */}
       <div style={{ textAlign: "center", marginBottom: "3.5rem" }}>
-        <a href="https://line.me/R/ti/p/@391knuuu" style={{
+        <a href={returnUrl} style={{
           display: "inline-flex", alignItems: "center", gap: "0.5rem", padding: "0.85rem 2rem",
           borderRadius: "999px", background: "#B8A06A", color: "#FFFFFF",
           fontFamily: "Georgia, serif", fontSize: "0.78rem", letterSpacing: "0.15em", textDecoration: "none",
