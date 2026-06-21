@@ -105,37 +105,30 @@ export default async function ResultPage({ searchParams }: Props) {
           ))}
         </p>
 
-        {/* 2. 持ち帰る — Mirror Card ownership framing */}
+        {/* 2. 持ち帰る — Future Letter framing */}
         <div style={{
           borderTop: "1px solid rgba(184,160,106,0.35)",
           paddingTop: "2.5rem",
         }}>
           <p style={{
-            fontFamily: "Georgia, serif",
-            fontSize: "0.95rem",
-            fontStyle: "italic",
-            color: "#1A1A1A",
-            letterSpacing: "0.04em",
-            marginBottom: "1.5rem",
-          }}>
-            Your Mirror Card is ready.
-          </p>
-
-          <p style={{
             fontFamily: "var(--font-jp)",
             fontSize: "0.85rem",
             fontWeight: 300,
             color: "#5F5F5C",
-            lineHeight: 2.1,
+            lineHeight: 2.2,
             marginBottom: "2.5rem",
           }}>
-            今日出会った未来のあなたを、<br />
-            忘れてしまわないように。<br />
-            あなた専用のMirror Cardとして<br />
-            お届けします。<br />
+            今日出会った未来の私は、<br />
+            あなたの中にある輝きのひとつ。<br />
             <br />
-            カードには、あなたへのメッセージと<br />
-            未来への小さな約束が込められています🕊
+            でも本当の魅力は、<br />
+            タイプだけでは語りきれないもの。<br />
+            <br />
+            あなたが大切にしていること、<br />
+            心が動く瞬間の中にも眠っています。<br />
+            <br />
+            未来のあなたから届いた<br />
+            最後のメッセージを受け取ってください🕊
           </p>
 
           <ReceiveButton type={type} />
@@ -148,7 +141,7 @@ export default async function ResultPage({ searchParams }: Props) {
             color: "#A39E94",
             letterSpacing: "0.05em",
           }}>
-            ＊Mirror CardはLINEだけの贈りものです
+＊Future LetterはLINEでお届けします
           </p>
         </div>
       </GateReveal>

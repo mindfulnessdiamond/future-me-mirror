@@ -55,7 +55,7 @@ export default function ReceiveButton({ type }: { type: string }) {
         transition={{ duration: 0.3 }}
         style={{ position: "relative", zIndex: 1 }}
       >
-        Mirror Cardを受け取る
+        Future Letterを受け取る
       </motion.span>
       <motion.span
         animate={{ x: [0, 6, 0] }}
