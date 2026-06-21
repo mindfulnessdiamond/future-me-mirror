@@ -2,31 +2,16 @@
 
 import { motion } from "framer-motion";
 
-// ▼ タイプ別 ProLineシナリオURL。揃ったものから順に差し替えてください。
-//   未設定のタイプは DEFAULT_URL（初期登録シナリオ）にフォールバックします。
-const DEFAULT_URL = "https://b94jxiy5.autosns.app/line";
-
-const SCENARIO_URL: Record<string, string> = {
-  MUSE: "https://b94jxiy5.autosns.app/addfriend/s/iEr2Z3S7le/@391knuuu",
-  // VISIONARY: "",
-  // QUEEN: "",
-  // EXPLORER: "",
-  // CREATOR: "",
-  // GARDEN: "",
-  // LIGHT: "",
-  // POET: "",
-  // CURATOR: "",
-  // BLOOM: "",
-  // DREAMER: "",
-  // FREE_SPIRIT: "",
-};
+// ▼ ProLine登録フォーム。全タイプ共通。非表示項目 form3-1 にタイプを渡す。
+//   フォーム送信 → 友だち追加 → 共通シナリオへ移動（ProLine側で設定）。
+const PROLINE_FORM_URL = "https://b94jxiy5.autosns.app/fm/rLWxPjG3Fy";
 
 export default function ReceiveButton({ type }: { type: string }) {
   const handleReceive = () => {
     try {
       sessionStorage.setItem("fmm_resultType", type);
     } catch {}
-    window.location.href = SCENARIO_URL[type] ?? DEFAULT_URL;
+    window.location.href = `${PROLINE_FORM_URL}?form3-1=${encodeURIComponent(type)}`;
   };
 
   return (
