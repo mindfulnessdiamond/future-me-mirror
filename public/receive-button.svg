@@ -1,0 +1,20 @@
+<svg width="1040" height="640" viewBox="0 0 1040 640" xmlns="http://www.w3.org/2000/svg">
+<rect x="0" y="0" width="1040" height="640" fill="#FAF6F0"/>
+<circle cx="60" cy="80" r="170" fill="#ECDDC6" opacity="0.45"/>
+<circle cx="990" cy="600" r="190" fill="#E7D2C2" opacity="0.40"/>
+<circle cx="980" cy="70" r="90" fill="#DFE0DA" opacity="0.35"/>
+<rect x="34" y="34" width="972" height="572" fill="none" stroke="#B8A06A" stroke-width="1.2" opacity="0.55"/>
+<g stroke="#B8A06A" stroke-width="1.6" fill="none">
+<polygon points="520,66 548,92 520,128 492,92"/>
+<line x1="492" y1="92" x2="548" y2="92"/>
+<line x1="520" y1="66" x2="520" y2="128"/>
+</g>
+<text x="520" y="186" text-anchor="middle" fill="#B8A06A" font-family="Georgia, 'Times New Roman', serif" font-size="22" letter-spacing="11">MINDFULNESS DIAMOND</text>
+<text x="520" y="312" text-anchor="middle" fill="#2A2820" font-family="Georgia, 'Times New Roman', serif" font-style="italic" font-size="74" letter-spacing="2">Your Mirror Card</text>
+<text x="520" y="372" text-anchor="middle" fill="#5F5F5C" font-family="'Hiragino Mincho ProN', 'Yu Mincho', serif" font-size="25" letter-spacing="3">未来のあなたから、小さなメッセージが届いています。</text>
+<line x1="480" y1="418" x2="560" y2="418" stroke="#B8A06A" stroke-width="1.4"/>
+<rect x="330" y="468" width="380" height="78" rx="39" fill="#B8A06A"/>
+<text x="505" y="517" text-anchor="middle" fill="#FFFFFF" font-family="Georgia, 'Times New Roman', serif" font-size="30" letter-spacing="8">受け取る</text>
+<text x="650" y="516" text-anchor="middle" fill="#FFFFFF" font-family="Georgia, serif" font-size="30">&#8594;</text>
+<text x="520" y="600" text-anchor="middle" fill="#B0A898" font-family="Georgia, 'Times New Roman', serif" font-size="18" letter-spacing="7">FUTURE ME MIRROR</text>
+</svg>
