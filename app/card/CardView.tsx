@@ -17,7 +17,7 @@ function getImageFile(type: ResultType): string {
 //   識別済み友だち(uid)がタップ → 指定シナリオへ移動して即メッセージ発火させる用。
 //   ProLineで発行したURLをここに入れてください（uidは自動で末尾に付けます）。
 //   未設定の間は、通常のLINEトークを開くだけにフォールバックします。
-const RETURN_ACTION_URL = ""; // 例: "https://b94jxiy5.autosns.app/xxxxx"
+const RETURN_ACTION_URL: string = ""; // 例: "https://b94jxiy5.autosns.app/xxxxx"
 const LINE_TALK_URL = "https://line.me/R/ti/p/@391knuuu";
 
 function buildReturnUrl(uid?: string): string {
