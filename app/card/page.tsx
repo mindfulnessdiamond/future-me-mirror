@@ -118,6 +118,28 @@ export default async function CardPage({ searchParams }: Props) {
           </a>
         </div>
 
+        {/* Back to LINE — continue the step flow */}
+        <div style={{ textAlign: "center", marginBottom: "3.5rem" }}>
+          <a href="https://line.me/R/ti/p/@391knuuu" style={{
+            display: "inline-flex",
+            alignItems: "center",
+            gap: "0.5rem",
+            padding: "0.85rem 2rem",
+            borderRadius: "999px",
+            background: "#B8A06A",
+            color: "#FFFFFF",
+            fontFamily: "Georgia, serif",
+            fontSize: "0.78rem",
+            letterSpacing: "0.15em",
+            textDecoration: "none",
+          }}>
+            LINEに戻って続きを受け取る →
+          </a>
+          <p style={{ fontSize: "0.66rem", color: "#B0A898", marginTop: "0.8rem", lineHeight: 1.8 }}>
+            このあと、あなたへの小さな手紙が届きます🕊️
+          </p>
+        </div>
+
         <p style={{ textAlign: "center", fontFamily: "Georgia, serif", fontSize: "0.55rem", letterSpacing: "0.3em", color: "#A39E94", textTransform: "uppercase", marginBottom: "2rem" }}>
           © 2026 Mindfulness Diamond
         </p>
