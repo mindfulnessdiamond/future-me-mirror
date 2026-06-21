@@ -32,12 +32,12 @@ export const GROUP_REP: Record<ResultType, ResultType> = {
 export const DEFAULT_ADDFRIEND = "https://b94jxiy5.autosns.app/line";
 
 export const GROUP_URL: Record<ResultType, string> = {
-  VISIONARY: "", // ① 未来を描く
-  MUSE: "https://b94jxiy5.autosns.app/addfriend/s/iEr2Z3S7le/@391knuuu", // ② 感性で形にする（既存MUSEシナリオ）
-  QUEEN: "", // ③ 自分の価値で輝く
-  EXPLORER: "", // ④ 自由に旅する
-  CREATOR: "", // ⑤ 創り、育てる
-  GARDEN: "", // ⑥ 人を照らす
+  VISIONARY: "https://b94jxiy5.autosns.app/addfriend/s/ZG9KqChE87/@391knuuu", // ① 未来を描く
+  MUSE: "https://b94jxiy5.autosns.app/addfriend/s/cYRhqQSTL2/@391knuuu", // ② 感性で形にする
+  QUEEN: "https://b94jxiy5.autosns.app/addfriend/s/cbePyHgnZo/@391knuuu", // ③ 自分の価値で輝く
+  EXPLORER: "https://b94jxiy5.autosns.app/addfriend/s/hQ3EjXocCz/@391knuuu", // ④ 自由に旅する
+  CREATOR: "https://b94jxiy5.autosns.app/addfriend/s/czyVWAbvpd/@391knuuu", // ⑤ 創り、育てる
+  GARDEN: "https://b94jxiy5.autosns.app/addfriend/s/tKzb1Tkyhm/@391knuuu", // ⑥ 人を照らす
   // 以下は代表ではないので未使用
   DREAMER: "",
   POET: "",
