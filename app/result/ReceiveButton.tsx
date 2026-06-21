@@ -2,18 +2,31 @@
 
 import { motion } from "framer-motion";
 
-// ▼ LINE公式アカウントができたら、この友だち追加URLに差し替えてください
-//    (例: https://lin.ee/xxxxxxx)。Phase2でLINEログイン認証URLに発展させます。
-const LINE_FRIEND_URL = "https://line.me/R/";
+// ▼ タイプ別 ProLineシナリオURL。揃ったものから順に差し替えてください。
+//   未設定のタイプは DEFAULT_URL（初期登録シナリオ）にフォールバックします。
+const DEFAULT_URL = "https://b94jxiy5.autosns.app/line";
+
+const SCENARIO_URL: Record<string, string> = {
+  MUSE: "https://b94jxiy5.autosns.app/addfriend/s/iEr2Z3S7le/@391knuuu",
+  // VISIONARY: "",
+  // QUEEN: "",
+  // EXPLORER: "",
+  // CREATOR: "",
+  // GARDEN: "",
+  // LIGHT: "",
+  // POET: "",
+  // CURATOR: "",
+  // BLOOM: "",
+  // DREAMER: "",
+  // FREE_SPIRIT: "",
+};
 
 export default function ReceiveButton({ type }: { type: string }) {
-  // type は今は表示せず保持のみ。Phase2でLINEログインのstateに乗せて
-  // 「この人=このタイプ」を結びつけ、結果をLINEへ自動送信します。
   const handleReceive = () => {
     try {
       sessionStorage.setItem("fmm_resultType", type);
     } catch {}
-    window.location.href = LINE_FRIEND_URL;
+    window.location.href = SCENARIO_URL[type] ?? DEFAULT_URL;
   };
 
   return (
