@@ -42,7 +42,7 @@ export const QUESTIONS: Question[] = [
     id: 4,
     text: "今日の自分を少し特別にするなら？",
     options: [
-      { key: "A", label: "お気に入りのジュエリーをつける" },
+      { key: "A", label: "装いを整えて、背筋を伸ばす" },
       { key: "B", label: "誰かに感謝を伝える、または会いに行く" },
       { key: "C", label: "いつもしないことをひとつやってみる" },
       { key: "D", label: "鏡の前で少し長く自分を見る" },
