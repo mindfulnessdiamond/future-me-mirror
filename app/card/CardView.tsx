@@ -16,7 +16,7 @@ function getImageFile(type: ResultType): string {
 // ▼ ProLineの「外部システム連携用の実行URL（call-beacon...）」をそのまま貼ってください。
 //   URL内に [[uid]] が含まれている形のままでOK。タップ時に実際のuidへ置換して叩きます。
 //   未設定の間は、通常のLINEトークを開くだけにフォールバックします。
-const RETURN_BEACON_URL: string = ""; // 例: "https://autosns.jp/api/call-beacon/H5QB...?uid=[[uid]]"
+const RETURN_BEACON_URL: string = "https://autosns.jp/api/call-beacon/MvuRwYH64g/[[uid]]";
 const LINE_TALK_URL = "https://line.me/R/ti/p/@391knuuu";
 
 export default function CardView({ type, uid }: { type: ResultType; uid?: string }) {
