@@ -13,25 +13,29 @@ function getImageFile(type: ResultType): string {
   return IMAGE_FILE[type] ?? `${type}.JPG`;
 }
 
-// ▼ ProLineの「クリックで発火するURL（アクションURL）」のベース。
-//   識別済み友だち(uid)がタップ → 指定シナリオへ移動して即メッセージ発火させる用。
-//   ProLineで発行したURLをここに入れてください（uidは自動で末尾に付けます）。
+// ▼ ProLineの「外部システム連携用の実行URL（call-beacon...）」をそのまま貼ってください。
+//   URL内に [[uid]] が含まれている形のままでOK。タップ時に実際のuidへ置換して叩きます。
 //   未設定の間は、通常のLINEトークを開くだけにフォールバックします。
-const RETURN_ACTION_URL: string = ""; // 例: "https://b94jxiy5.autosns.app/xxxxx"
+const RETURN_BEACON_URL: string = ""; // 例: "https://autosns.jp/api/call-beacon/H5QB...?uid=[[uid]]"
 const LINE_TALK_URL = "https://line.me/R/ti/p/@391knuuu";
-
-function buildReturnUrl(uid?: string): string {
-  if (RETURN_ACTION_URL && uid) {
-    const sep = RETURN_ACTION_URL.includes("?") ? "&" : "?";
-    return `${RETURN_ACTION_URL}${sep}uid=${encodeURIComponent(uid)}`;
-  }
-  return LINE_TALK_URL;
-}
 
 export default function CardView({ type, uid }: { type: ResultType; uid?: string }) {
   const content = RESULT_CONTENT[type];
   const descLines = content.description.split("\n");
-  const returnUrl = buildReturnUrl(uid);
+
+  const handleReturn = (e: React.MouseEvent) => {
+    // 発火URLが設定されていて uid があれば、裏でビーコンを叩いてから LINE に戻る
+    if (RETURN_BEACON_URL && uid) {
+      e.preventDefault();
+      const beacon = RETURN_BEACON_URL.replace(/\[\[uid\]\]/g, encodeURIComponent(uid));
+      try {
+        const img = new Image();
+        img.src = beacon; // fire-and-forget でシナリオ移動を発火
+      } catch {}
+      setTimeout(() => { window.location.href = LINE_TALK_URL; }, 350);
+    }
+    // 未設定なら通常リンク（LINEトークを開く）
+  };
   const shareCardRef = useRef<HTMLDivElement>(null);
   const [saving, setSaving] = useState(false);
   const tagText = "@fumi_jeweler #FutureMeMirror";
@@ -212,7 +216,7 @@ export default function CardView({ type, uid }: { type: ResultType; uid?: string
 
       {/* ===== back to LINE ===== */}
       <div style={{ textAlign: "center", marginBottom: "3.5rem" }}>
-        <a href={returnUrl} style={{
+        <a href={LINE_TALK_URL} onClick={handleReturn} style={{
           display: "inline-flex", alignItems: "center", gap: "0.5rem", padding: "0.85rem 2rem",
           borderRadius: "999px", background: "#B8A06A", color: "#FFFFFF",
           fontFamily: "Georgia, serif", fontSize: "0.78rem", letterSpacing: "0.15em", textDecoration: "none",
