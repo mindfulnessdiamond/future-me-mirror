@@ -15,17 +15,23 @@ interface Props {
 export default function OptionsList({ options, onSelect }: Props) {
   return (
     <div style={{ display: "flex", flexDirection: "column", gap: "0.5rem" }}>
-      {options.map((opt) => (
+      {options.map((opt, i) => (
         <motion.button
           key={opt.key}
           onClick={() => onSelect(opt.key)}
+          initial={{ opacity: 0, y: 22 }}
+          animate={{ opacity: 1, y: 0 }}
+          transition={{
+            duration: 0.5,
+            ease: [0.22, 1, 0.36, 1],
+            delay: 0.12 + i * 0.09,
+          }}
           whileHover="active"
           whileTap="tap"
           variants={{
             active: { scale: 1.015 },
             tap: { scale: 0.97 },
           }}
-          transition={{ duration: 0.2, ease: "easeOut" }}
           style={{
             position: "relative",
             display: "flex",
