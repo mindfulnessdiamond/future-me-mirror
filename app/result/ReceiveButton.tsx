@@ -1,17 +1,15 @@
 "use client";
 
 import { motion } from "framer-motion";
-
-// ▼ ProLine登録フォーム。全タイプ共通。非表示項目 form3-1 にタイプを渡す。
-//   フォーム送信 → 友だち追加 → 共通シナリオへ移動（ProLine側で設定）。
-const PROLINE_FORM_URL = "https://b94jxiy5.autosns.app/fm/rLWxPjG3Fy";
+import { ResultType } from "@/lib/types";
+import { getAddFriendUrl } from "@/lib/groups";
 
 export default function ReceiveButton({ type }: { type: string }) {
   const handleReceive = () => {
     try {
       sessionStorage.setItem("fmm_resultType", type);
     } catch {}
-    window.location.href = `${PROLINE_FORM_URL}?form3-1=${encodeURIComponent(type)}`;
+    window.location.href = getAddFriendUrl(type as ResultType);
   };
 
   return (
